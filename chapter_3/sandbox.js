@@ -60,19 +60,23 @@ do{
 } while(i < 5); */
 
 // conditional statements
-
-// if-statement
-/* const powerLevel = 10000;
+const powerLevel = 10000;
 if(powerLevel > 9000){
-    console.log('The scouter indiactes their power level IS OVER 9000!!!');
-} */
+    console.log('The scouter indicates their power level IS OVER 9000!!!');
+}
 
-/* const ninjas = ['shaun', 'ryu', 'chun-li', 'yoshi'];
+const ninjas = ['shaun', 'ryu', 'chun-li', 'yoshi'];
 if(ninjas.length > 4){ // Will NOT fire as it's not greater than four.
     console.log("That's alot of ninjas");
-} */
+}
 
-    const password = 'p@ssword';
-    if(password.length >= 8){
-        console.log('password meets sufficient length.')
-    }
+const password = 'user@';
+if(password.length >= 12 && password.includes('@')){ // logical operator: &&.
+    console.log('MEETS_STRONG_INTEGRITY');
+} else if(password.length >= 8 || password.includes('@') && password.length > 5){ // logical operator: ||
+    console.log('MEETS_BASIC_INTEGRITY');
+} else {
+    console.log("FAILED_PASSWORD_INTEGRITY");
+}
+
+
