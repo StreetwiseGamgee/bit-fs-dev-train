@@ -60,7 +60,7 @@ do{
 } while(i < 5); */
 
 // conditional statements
-const powerLevel = 10000;
+/* const powerLevel = 10000;
 if(powerLevel > 9000){
     console.log('The scouter indicates their power level IS OVER 9000!!!');
 }
@@ -68,15 +68,38 @@ if(powerLevel > 9000){
 const ninjas = ['shaun', 'ryu', 'chun-li', 'yoshi'];
 if(ninjas.length > 4){ // Will NOT fire as it's not greater than four.
     console.log("That's alot of ninjas");
-}
+} */
 
-const password = 'user@';
+/* const password = 'user@';
 if(password.length >= 12 && password.includes('@')){ // logical operator: &&.
     console.log('MEETS_STRONG_INTEGRITY');
 } else if(password.length >= 8 || password.includes('@') && password.length > 5){ // logical operator: ||
     console.log('MEETS_BASIC_INTEGRITY');
 } else {
     console.log("FAILED_PASSWORD_INTEGRITY");
+} */
+
+// logical NOT (!)
+let user = false;
+
+if(!user){
+   console.log('You must be logged in to continue'); 
 }
+console.log(!true); // false
+console.log(!false); // true
 
+// break and continue
+const scores = [50, 25, 0, 30, 100, 20, 10];
+for(let i = 0; i < scores.length; i++){
 
+    if(scores[i] === 0){
+        continue; // a continue effectivly skips the current itteration.
+    }
+
+    console.log('your score: ', scores[i]);
+
+    if(scores[i] === 100){
+        console.log('congrats, you got the top score!');
+        break; // a break will cease the for-loop's conditional firing when explicitly met.
+    }
+}
