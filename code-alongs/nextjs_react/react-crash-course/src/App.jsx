@@ -1,7 +1,9 @@
 import Post from './components/Post';
 
 function App() {
-  return <Post />; /*MUST START w/ an uppercase */
+  return <main>
+      <Post author="Crispy C" body="React.js is a test of patience"/>
+      <Post author="Alexander Ocheeva" body="Don't forget too like an subscribe"/>
+  </main> 
 }
-
 export default App;
