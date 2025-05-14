@@ -1,29 +1,15 @@
-import {useState} from 'react';
 import classes from './NewPost.module.css';
 
-function NewPost() {
-    /* Using array destructuring:
-     * To store current value in a const. and the updating function.
-     * Typically we use names that would describe the state. 
-     * general syntax: const [currentValue, setCurrentValue] = useState('');
-     */
-    const [enteredBody, setEnteredBody] = useState('');
-
-    function changeBodyHandler(event) {
-       setEnteredBody(event.target.value);
-    }
+function NewPost(props) { 
     return (
         <form className={classes.form}>
             <p>
                 <label htmlFor="body">Text</label>
-                <textarea id="body" required rows={3} onChange={changeBodyHandler} />
-            </p>
-            <p>
-                {enteredBody}
+                <textarea id="body" required rows={3} onChange={props.onBodyChange} />
             </p>
             <p>
                 <label htmlFor="name">Your name</label>
-                <input type="text" id="name" required />
+                <input type="text" id="name" required onChange={props.onAuthorChange}/>
             </p>
         </form>
     );

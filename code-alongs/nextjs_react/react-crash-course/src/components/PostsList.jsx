@@ -1,17 +1,25 @@
+import {useState} from 'react';
 import Post from './Post';
 import NewPost from './NewPost';
 import classes from './PostsList.module.css';
 
 function PostsList() {
-     {/* To meet the requirement .jsx has regarding child elements we must first import 'NewPost' and or the desired import.
-       * Next we wrap those elements inside an empty element aka 'fragment' <> </> as sibling elements aren't allowed.  
-       * This ensures that we only have one root element inside the return statement.
-       */}
+    const [enteredBody, setEnteredBody]  = useState ('');
+    const [enteredAuthor, setEnteredAuthor ] = useState('');
+
+    function bodyChangeHandler(event) {
+        setEnteredBody(event.target.value);
+    }
+
+    function authorChangeHandler(event) {
+        setEnteredAuthor(event.target.value);
+    }
+    
     return (
-        <>
-            <NewPost />
+        <> {/*Empty element acting as wrapper for sibling elements as they cannot be stored in root. */}
+            <NewPost onBodyChange={bodyChangeHandler} onAuthorChange={authorChangeHandler}/>
             <ul className={classes.posts}>
-                <Post author="Crispy C" body="React.js is a test of patience"/>
+                <Post author={enteredAuthor} body={enteredBody}/>
                 <Post author="Alexander Ocheeva" body="Don't forget too like an subscribe"/>
             </ul>
         </>
