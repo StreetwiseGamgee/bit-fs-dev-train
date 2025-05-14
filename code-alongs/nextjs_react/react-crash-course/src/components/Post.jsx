@@ -1,12 +1,11 @@
-import classes from './Post.module.css';
+import classes from './Post.module.css'; // Remember to place it in the right directory -_-
 
 function Post(props) { 
     return (
-        <div className={classes.post}>
-            <p className={classes.post}></p>
+        <li className={classes.post}>
             <p className={classes.author}>{props.author}</p>
             <p className={classes.text}>{props.body}</p>
-        </div>
+        </li>
     );
 }
 
