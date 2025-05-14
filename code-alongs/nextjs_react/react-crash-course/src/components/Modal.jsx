@@ -9,10 +9,10 @@ import classes from './Modal.module.css';
     );
 } */
 
-function Modal({ children }) { // Instead of using "props." we can use obj. destructuring
+function Modal({ children, onClose }) { // Instead of using "props." we can use obj. destructuring
     return ( 
         <>
-            <div className={classes.backdrop}/>
+            <div className={classes.backdrop} onClick={onClose}/>
             <dialog open className={classes.modal}>
                 {children}
             </dialog> 
