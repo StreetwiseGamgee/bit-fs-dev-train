@@ -5,28 +5,31 @@ import Modal from './Modal';
 import classes from './PostsList.module.css';
 
 function PostsList({isPosting, onStopPosting}) {
+    const [posts, setPosts] = useState([]);
     
-    // let modalContent;
-    // if (modalIsVisible) {
-    //     modalContent = (
-    //         <Modal onClose={hideModalHandler}>
-    //             <NewPost onBodyChange={bodyChangeHandler} 
-    //                     onAuthorChange={authorChangeHandler}
-    //             />
-    //         </Modal>
-    //     );
-    // }
-    
-    return (
-        <> {/*Empty element acting as wrapper for sibling elements as they cannot be stored in root. */}
+function addPostHandler(postData) {
+    setPosts((existingPosts) => [postData, ...existingPosts])
+}
+    return (        
+        <> 
             {isPosting && ( 
                 <Modal onClose={onStopPosting}>
-                   <NewPost onCancel={onStopPosting} />
-               </Modal>
+                    <NewPost onCancel={onStopPosting} onAddPost={addPostHandler}/>
+                </Modal>
             )}
-            <ul className={classes.posts}>
-                <Post author="Streetwise Gamgee" body="Don't forget too like an subscribe"/>
-            </ul>
+            {posts.length > 0 && ( // If post(s) values are > 0 the post(s) will display.
+                <ul className={classes.posts}>
+                    {posts.map((post) => (
+                        <Post key={post.body} author={post.author} body={post.body} />
+                    ))}
+                </ul>
+            )}
+            {posts.length === 0 && ( 
+                <div style={{textAlign: 'center', color: 'white'}}>
+                    <h2>There are no posts yet!</h2>
+                    <p>Start adding some!</p>
+                </div>
+            )}
         </>
     );
 }
