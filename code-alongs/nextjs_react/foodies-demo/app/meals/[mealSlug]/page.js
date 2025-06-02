@@ -6,6 +6,12 @@ import classes from './page.module.css';
 
 export async function generateMetadata({params}) {
 	const meal = getMeal(params.mealSlug);
+
+    if (!meal) {
+    // Calling this funct. will stop the component from exec.
+    notFound(); //  and will show the closest not-found error page
+    }
+
 	return {
 		title: meal.title,
 		description: meal.summary,
